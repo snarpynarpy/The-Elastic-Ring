@@ -16,35 +16,84 @@ damage_cuased_when_weak_spot_is_hit_for_Rebme = 50
 damage_cuased_when_weak_spot_is_hit_for_Anett = 25
 damage_cuased_when_weak_spot_is_hit_for_Meddal = 10 
     # 3 is proably too low
-    # look into how difficult t is to add in differ diffuclties
-        # 4 modes easy, med, hard, impossiable(cometing for a score+ leader board, just an idea)
 
-    init python: 
-    random 
-    class charcter:
-        def__ init__("self, name, health, attack"): 
-        self.name = name
-        self.health = health
-        self.attack = attack
+     init python:
     
-        def is_alive (self ):
-            return self.health > 0 
-            
-        def take_damage (self,  damage):
-            self.health -= damage 
-            self.health = max(self.health, 0) 
-        def deal_damage (self, target):
-            damage = random.raninit(self.health -5, self.health +5) 
-            target.take_damage(damage)
-            return Damage 
+            import random
+        
+            class Fighter:
+        
+                def __init__(self, name, health, attack, hitboxes, directions):
+        
+                    self.name = name
+                    self.health = health
+                    self.attack = attack
+                    self.hitboxes = hitboxes
+                    self.directions = directions
+        
+                def is_alive(self):
+                    return self.health > 0
+        
+                def take_damage(self, damage):
+                    self.health -= damage
+                    self.health = max(self.health, 0)
+        
+        
+            class Player(Fighter):
+        
+                def __init__(self, name, health, attack):
+        
+                    super().__init__(name, health, attack, 0, [])
+        
+        
+            def create_player():
+                return Player("Main character", 100, 20)
+        
+        
+            def create_rebme():
+                return Fighter(
+                    "Rebme",
+                    100,
+                    30,
+                    3,
+                    ["Left", "Right"]
+                )
+        
+            def create_anett():
+                return Fighter(
+                    "Anett",
+                    100,
+                    40,
+                    5,
+                    ["Left", "Right", "Up", "Down"]
+                )
+        
+            def create_meddal():
+                return Fighter(
+                    "Meddal",
+                    150,
+                    50,
+                    10,
+                    ["Left", "Right", "Up", "Down", "Space"]
+                )
+ modal True
+    # modal True makes it interactive
 
-    class player(charcter):
-     def__ init__("self, name, health, attack"): 
-           super()._init_(name, health, attack)
-            slef.defending = false
+    vbox:
+        xalign 0.5
+        yalign 0.5
+        spacing 20
 
-    class enemy(charcter):
-    pass
+        text "DODGE!"
+        text "Choose a direction!"
+        text "Hitboxes: [hitboxes]"
+
+        for direction in directions:
+
+            textbutton direction:
+                action Return(direction)
+
+        timer 3.0 action Return(None)
 
 
 def player_turn:
@@ -170,3 +219,217 @@ label start:
     # This ends the game.
 
     return
+
+
+
+
+
+def player_turn:
+    damage = player.deal_damage(enemy):
+        renpy.notify(f"you attack {enemy.name} for {damage} damage!")
+
+
+def enemy_turn:
+    damage = enemy.deal_damage(enemy):
+        renpy.notify(f"you attack {player.name} for {damage} damage!")
+    if 
+    player.defending:
+    damage = random.raninit (int(enemy.attck*0.3), int(enemy.attck*0.7))
+    play.defending = false
+    else 
+damage = enemy deal_damage(player)
+player.take_damage(damage)
+renpy.notify(f"{enemy_name} attacks you for {damage} damage")
+
+
+
+screen battel_status():
+    vbox: 
+        text "player health {player.health}"
+        text "enemy health {enemy.health}"
+            if not player.isalive
+                text "died"
+        elif if not enemy.isalive
+            text "win" 
+
+(defult player = player("Main character", health= 100, attack=20)
+
+defult player= 
+            
+defult enemy = enemy("Rebme", health=100, attack=20)
+defult enemy = enemy("Anett", health=100, attack=20)
+defult enemy = enemy("Meddal", health=100, attack=20)
+    #will need to change as "enemy refers to 3 different "
+    # check to see if it works, possiabley chnage health )
+
+    defult player = None
+    defult enemy = None
+
+
+            screen dodge_screen(directions, hitboxes):
+
+    modal True
+
+    vbox:
+        xalign 0.5
+        yalign 0.5
+        spacing 20
+
+        text "DODGE!"
+        text "Choose a direction!"
+        text "Hitboxes: [hitboxes]"
+
+        for direction in directions:
+
+            textbutton direction:
+                action Return(direction)
+
+        timer 3.0 action Return(None)
+
+
+            
+# The game starts here.
+
+label start:
+
+    # Show a background. This uses a placeholder by default, but you can
+    # add a file (named either "bg room.png" or "bg room.jpg") to the
+    # images directory to show it.
+
+    scene bg outside 
+     show mc (F1)
+    mc "(this is placeholder) wrong place " 
+
+
+    
+
+    scene bg intro 
+    show mc (F2)
+    show c (F3)
+    c "PLACE HOLDER you are up in x, good luck, you are going to need it" 
+   
+
+
+    scene bg walk through 1
+    # maybe delteted later 
+
+
+
+
+    scene bg fight 1
+    show mc F4 at right
+    mc "sdfghjkl"
+
+    show R F5 at left
+    r " "
+
+    label battel
+    "the round begins" 
+
+    while true
+        show screen battel status
+        menu:
+        "attack":
+            $ player_turn()
+                pause 3.0 
+        if not enemy.is_alive(): 
+        "you defeated R"
+        jump win1 
+    
+        "Defend":
+            $ player.defending = true
+    
+    
+        $ enemy_turn 
+             pause 3.0 
+            if not player.is_alive(): 
+            "lose"
+            jump ending1 
+        
+            "Defend":
+                $ player.defending = true
+
+    label win1
+    "drtyuio"
+
+    label ending1
+    "fadsaghuio"
+
+    scene bg walk through 2
+    # maybe delteted later 
+    
+
+
+
+
+    scene bg fight 2
+      while true
+        show screen battel status
+        menu:
+        "attack":
+            $ player_turn()
+                pause 3.0 
+        if not enemy.is_alive(): 
+        "you defeated R"
+        jump win2
+    
+        "Defend":
+            $ player.defending = true
+    
+    
+        $ enemy_turn 
+             pause 3.0 
+            if not player.is_alive(): 
+            "lose"
+            jump ending2
+        
+            "Defend":
+                $ player.defending = true
+    label win2
+    "drtyuio"
+
+    label ending2
+    "fadsaghuio"
+
+
+     scene bg walk through 3
+    # maybe delteted later 
+
+
+
+
+
+    scene bg fight 3
+          while true
+        show screen battel status
+        menu:
+        "attack":
+            $ player_turn()
+                pause 3.0 
+        if not enemy.is_alive(): 
+        "you defeated R"
+        jump win2
+    
+        "Defend":
+            $ player.defending = true
+    
+    
+        $ enemy_turn 
+             pause 3.0 
+            if not player.is_alive(): 
+            "lose"
+            jump ending2
+        
+            "Defend":
+                $ player.defending = true
+
+
+
+
+
+
+
+
+
+
+
