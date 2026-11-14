@@ -321,7 +321,7 @@ label ending3:
 
     jump start
 
-
+label ending4:
     scene bg end 4
 
     c "PLACEHOLDER"
