@@ -273,7 +273,7 @@ show m PLACEHOLDER at right
 
 
     scene bg end 2 (lose second fight * reminder health is reflilled at the end of the rounds)
-  jump start
+      jump start
    
 
     scene bg end 3 (loses final match)
