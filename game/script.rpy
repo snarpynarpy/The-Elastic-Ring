@@ -50,10 +50,6 @@ init python:
 
         return Player("Main character", 100, 20)
 
-       def create_player():
-        return Player("Main character", 100, 20)
-
-
     def create_rebme():
         return Fighter(
             "Rebme",
