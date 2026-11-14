@@ -251,7 +251,7 @@ show mc PLACEHOLDER at left
 
     scene bg fight 3
     
-   show mc PLACEHOLDER at left
+ show mc PLACEHOLDER at left 
     show m PLACEHOLDER at right 
 
     $ enemy = create_Meddal()
