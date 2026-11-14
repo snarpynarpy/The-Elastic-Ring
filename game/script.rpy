@@ -198,16 +198,14 @@ label start:
     mc "Yup.. This should be the place!!!!"
 
     scene bg intro
-    show mc PLACEHOLDER at left
-    show c PLACEHOLDER at right
+    show c PLACEHOLDER at center
 
     c "You are up in x, good luck, you are going to need it."
 
     scene bg walk through 1
 
     scene bg fight 1
-    show mc PLACEHOLDER at left
-    show r PLACEHOLDER at right
+    show r PLACEHOLDER at center
 
     $ enemy = create_rebme()
 
@@ -225,8 +223,7 @@ label start:
     scene bg walk through 2
 
     scene bg fight 2
-    show mc PLACEHOLDER at left
-    show a PLACEHOLDER at right
+    show a PLACEHOLDER at center
 
     $ enemy = create_anett()
 
@@ -244,8 +241,7 @@ label start:
     scene bg walk through 3
 
     scene bg fight 3
-    show mc PLACEHOLDER at left
-    show m PLACEHOLDER at right
+    show m PLACEHOLDER at center
 
     $ enemy = create_meddal()
 
