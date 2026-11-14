@@ -4,7 +4,11 @@
 # name of the character.
 
 define e = Character("Eileen")
-
+define mc = Character ("Main character")
+define c = Character ("Coach")
+define r = Chacter ("Rebme")
+define a = Charcter ("Anett")
+define m = Charcter ("Meddal")
 
 # The game starts here.
 
