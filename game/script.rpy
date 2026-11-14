@@ -187,6 +187,7 @@ screen title_screen():
 
 
 label start:
+$ player = create_player()
 
     scene bg outside 
     show mc PLACEHOLDER at left 
@@ -212,7 +213,7 @@ label start:
     "The first round begins!"
 
     call battle(enemy, damage_cuased_when_weak_spot_is_hit_for_Rebme)
-
+    $ player.health = 100
     $ result = _return
 
     if result == "lose":
@@ -235,14 +236,12 @@ label start:
     "The second round begins!"
 
     call battle(enemy, damage_cuased_when_weak_spot_is_hit_for_Anett)
-
+    $ player.health = 100
     $ result = _return
 
     if result == "lose":
 
         jump ending2
-
-    "lose"
 
     scene bg walk through 3
     # maybe delteted later 
@@ -258,7 +257,7 @@ label start:
     "The third round begins!"
 
     call battle(enemy, damage_cuased_when_weak_spot_is_hit_for_Meddal)
-
+    $ player.health = 100
     $ result = _return
 
     if result == "lose":
@@ -322,4 +321,5 @@ label ending4:
     scene bg end 4
 
     c "PLACEHOLDER"
+    jump ending4
 return 
