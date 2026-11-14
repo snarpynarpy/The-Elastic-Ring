@@ -274,7 +274,7 @@ show mc
   jump start
    
 
-    scene bg end 3 (loses finnal match)
+    scene bg end 3 (loses final match)
     
     scene bg end 3
 
