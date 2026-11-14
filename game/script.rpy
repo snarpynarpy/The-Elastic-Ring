@@ -174,12 +174,6 @@ screen battle_status(player, enemy):
         text "Health: [enemy.health]"
 
 
-label start:
-
-    # Show a background. This uses a placeholder by default, but you can
-    # add a file (named either "bg room.png" or "bg room.jpg") to the
-    # images directory to show it.
-
 screen title_screen():
 
     vbox:
@@ -187,7 +181,7 @@ screen title_screen():
         yalign 0.5
         spacing 20
 
-            text "THE ELASTIC RING"
+        text "THE ELASTIC RING"
 
         textbutton "Click to Start":
             action Return()
@@ -203,43 +197,26 @@ screen title_screen():
 
     scene bg walk through 1
     # maybe delteted later 
-    scene bg fight 1
-    show mc F3  
-    show R F4 
-label battel
-    "the round begins" 
+   
 
-    while true
-        show screen battel status
-        menu:
-        "attack":
-            $ player_turn()
-                pause 3.0 
-        if not enemy.is_alive(): 
-        "you defeated R"
-        jump win1 
-    
-        "Defend":
-            $ player.defending = true
-    
-    
-        $ enemy_turn 
-             pause 3.0 
-            if not player.is_alive(): 
-            "lose"
-            jump ending1 
-        
-            "Defend":
-                $ player.defending = true
+scene bg fight 1
+  show mc 
+    show R 
 
-    label win1
-    "drtyuio"
+    $ enemy = create_rebme()
 
-    label ending1
-    "fadsaghuio"
+    "The first round begins!"
 
+    call battle(enemy, rebme_weak_spot_damage)
 
-    
+    $ result = _return
+
+    if result == "lose":
+
+        jump ending1
+
+    "lose"
+
 
     scene bg walk through 2
     # maybe delteted later 
@@ -247,85 +224,49 @@ label battel
 
     scene bg fight 2
 
-    show mc F5  
-     show a f6  
-        label battel
-    "the round begins" 
+show mc 
+    show a 
 
-    while true
-        show screen battel status
-        menu:
-        "attack":
-            $ player_turn()
-                pause 3.0 
-        if not enemy.is_alive(): 
-        "you defeated R"
-        jump win1 
-    
-        "Defend":
-            $ player.defending = true
-    
-    
-        $ enemy_turn 
-             pause 3.0 
-            if not player.is_alive(): 
-            "lose"
-            jump ending2
-        
-            "Defend":
-                $ player.defending = true
+    $ enemy = create_Anett()
 
-    label win2
-    "drtyuio"
+    "The second round begins!"
 
-    label ending2
-    "fadsaghuio"
+    call battle(enemy, rebme_weak_spot_damage)
+
+    $ result = _return
+
+    if result == "lose":
+
+        jump ending2
+
+    "lose"
 
      scene bg walk through 3
     # maybe delteted later 
 
 
 
-
-
     scene bg fight 3
     
-    show mc f7  
-    show m f8  
-        label battel
-    "the round begins" 
+   show mc 
+    show m
 
-    while true
-        show screen battel status
-        menu:
-        "attack":
-            $ player_turn()
-                pause 3.0 
-        if not enemy.is_alive(): 
-        "you defeated R"
-        jump win1 
-    
-        "Defend":
-            $ player.defending = true
-    
+    $ enemy = create_Meddal()
 
-        $ enemy_turn 
-             pause 3.0 
-            if not player.is_alive(): 
-            "lose"
-            jump ending1 
-        
-            "Defend":
-                $ player.defending = true
+    "The third round begins!"
 
-    label win3
-    "drtyuio"
+    call battle(enemy, rebme_weak_spot_damage)
 
-    label ending3
-    "fadsaghuio"
+    $ result = _return
+
+    if result == "lose":
+
+        jump ending3
+
+    "lose"
 
 
-    scene bg end 1 (lose first fight)
+    scene bg end 3 (lose third fight)
     jump start
 
 
@@ -344,6 +285,8 @@ label battel
 
     scene bg end 4 (wins all matches, c dialog then turn around and fade to balck + logo/name) 
 
+
+
 label ending1:
 
     scene bg end 1
@@ -355,7 +298,30 @@ label ending1:
 
 label ending2:
 
+    scene bg end 2
+
+    "You lost the second match."
+
+    jump start
+
 
 label ending3:
 
+    scene bg end 3
+
+    "You lost the final match."
+
+    jump start
+
+
+    scene bg end 4
+
+    c "PLACEHOLDER"
+
     return
+return 
+
+
+
+
+
