@@ -186,67 +186,62 @@ screen title_screen():
             action Start()
 
 
-label start:
-$ player = create_player()
 
-scene bg outside 
-show mc PLACEHOLDER at left 
-   
-    mc "Wow… wow.. Wow!!! Today is an amazing day to be almost employed :) " 
+label start:
+
+    $ player = create_player()
+
+    scene bg outside
+    show mc PLACEHOLDER at left
+
+    mc "Wow… wow.. Wow!!! Today is an amazing day to be almost employed :)"
     mc "Yup.. This should be the place!!!!"
 
-    scene bg intro 
-    show mc PLACEHOLDER at left 
-    show c PLACEHOLDER at right 
-    c "you are up in x, good luck, you are going to need it" 
-   
+    scene bg intro
+    show mc PLACEHOLDER at left
+    show c PLACEHOLDER at right
+
+    c "You are up in x, good luck, you are going to need it."
+
     scene bg walk through 1
-    # maybe delteted later 
-   
 
     scene bg fight 1
-    show mc PLACEHOLDER at left 
-    show r PLACEHOLDER at right 
+    show mc PLACEHOLDER at left
+    show r PLACEHOLDER at right
 
     $ enemy = create_rebme()
 
     "The first round begins!"
 
     call battle(enemy, damage_cuased_when_weak_spot_is_hit_for_Rebme)
-    $ player.health = 100
+
     $ result = _return
 
     if result == "lose":
-
         jump ending1
 
-    "lose"
-
+    $ player.health = 100
 
     scene bg walk through 2
-    # maybe delteted later 
-    
 
     scene bg fight 2
-    show mc PLACEHOLDER at left 
-    show a PLACEHOLDER at right 
+    show mc PLACEHOLDER at left
+    show a PLACEHOLDER at right
 
     $ enemy = create_anett()
 
     "The second round begins!"
 
     call battle(enemy, damage_cuased_when_weak_spot_is_hit_for_Anett)
-    $ player.health = 100
+
     $ result = _return
 
     if result == "lose":
-
         jump ending2
 
+    $ player.health = 100
+
     scene bg walk through 3
-    # maybe delteted later 
-
-
 
     scene bg fight 3
     show mc PLACEHOLDER at left
@@ -257,69 +252,38 @@ show mc PLACEHOLDER at left
     "The third round begins!"
 
     call battle(enemy, damage_cuased_when_weak_spot_is_hit_for_Meddal)
-    $ player.health = 100
+
     $ result = _return
 
     if result == "lose":
-
         jump ending3
 
-    "lose"
-
-    scene bg end 3 
-    #lose third fight
-    jump start
-
-
-    scene bg end 2 
-    #lose second fight * reminder health is reflilled 
-    #at the end of the rounds
-
-    jump start
-   
-
-    scene bg end 3 
-    #loses final match
-    
-    scene bg end 3
-
-    jump start
-
-
-    scene bg end 4 
-    #wins all matches, c dialog then turn around and fade to balck + logo/name
-
+    jump ending4
 
 
 label ending1:
 
     scene bg end 1
-
     "You lost the first match."
-
     jump start
 
 
 label ending2:
 
     scene bg end 2
-
     "You lost the second match."
-
     jump start
 
 
 label ending3:
 
     scene bg end 3
-
     "You lost the final match."
-
     jump start
 
-label ending4:
-    scene bg end 4
 
+label ending4:
+
+    scene bg end 4
     c "PLACEHOLDER"
-    jump ending4
-return 
+    return
