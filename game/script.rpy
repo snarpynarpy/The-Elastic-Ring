@@ -50,7 +50,7 @@ init python:
 
         return Player("Main character", 100, 20)
 
-    def create_rebme():
+    $ enemy = create_rebme()
 
         return Fighter(
             "Rebme",
@@ -61,7 +61,7 @@ init python:
         )
 
 
-    def create_anett():
+    $ enemy = create_Anett()
 
         return Fighter(
             "Anett",
@@ -72,7 +72,7 @@ init python:
         )
 
 
-    def create_meddal():
+    $ enemy = create_Meddal()
 
         return Fighter(
             "Meddal",
@@ -185,8 +185,10 @@ screen title_screen():
         text "THE ELASTIC RING"
 
         textbutton "Click to Start":
-            action Return()
+            action start()
 
+
+label start:
     scene bg outside 
      show mc PLACEHOLDER at left 
     mc "Wow… wow.. Wow!!! Today is an amazing day to be almost employed :) " 
@@ -203,14 +205,14 @@ screen title_screen():
    
 
 scene bg fight 1
-  show mc PLACEHOLDER at left 
-    show R PLACEHOLDER at right 
+    show mc PLACEHOLDER at left 
+    show r PLACEHOLDER at right 
 
     $ enemy = create_rebme()
 
     "The first round begins!"
 
-    call battle(enemy, rebme_weak_spot_damage)
+     call battle(enemy, damage_cuased_when_weak_spot_is_hit_for_Rebme)
 
     $ result = _return
 
@@ -227,14 +229,14 @@ scene bg fight 1
 
     scene bg fight 2
 
-show mc PLACEHOLDER at left 
+    show mc PLACEHOLDER at left 
     show a PLACEHOLDER at right 
 
     $ enemy = create_Anett()
 
     "The second round begins!"
 
-    call battle(enemy, Anett_weak_spot_damage)
+    call battle(enemy, damage_cuased_when_weak_spot_is_hit_for_Anett)
 
     $ result = _return
 
@@ -258,7 +260,7 @@ show m PLACEHOLDER at right
 
     "The third round begins!"
 
-    call battle(enemy, Meddal_weak_spot_damage)
+    ccall battle(enemy, damage_cuased_when_weak_spot_is_hit_for_Meddal)
 
     $ result = _return
 
@@ -268,22 +270,28 @@ show m PLACEHOLDER at right
 
     "lose"
 
-    scene bg end 3 (lose third fight)
+    scene bg end 3 
+    #lose third fight
     jump start
 
 
-    scene bg end 2 (lose second fight * reminder health is reflilled at the end of the rounds)
-      jump start
+    scene bg end 2 
+    #lose second fight * reminder health is reflilled 
+    #at the end of the rounds
+
+    jump start
    
 
-    scene bg end 3 (loses final match)
+    scene bg end 3 
+    #loses final match
     
     scene bg end 3
 
     jump start
 
 
-    scene bg end 4 (wins all matches, c dialog then turn around and fade to balck + logo/name) 
+    scene bg end 4 
+    #wins all matches, c dialog then turn around and fade to balck + logo/name
 
 
 
