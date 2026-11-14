@@ -189,8 +189,8 @@ screen title_screen():
 label start:
 $ player = create_player()
 
-    scene bg outside 
-    show mc PLACEHOLDER at left 
+scene bg outside 
+show mc PLACEHOLDER at left 
    
     mc "Wow… wow.. Wow!!! Today is an amazing day to be almost employed :) " 
     mc "Yup.. This should be the place!!!!"
