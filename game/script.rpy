@@ -188,7 +188,8 @@ screen title_screen():
 
     scene bg outside 
      show mc (F1)
-    mc "(this is placeholder) wrong place " 
+    mc "Wow… wow.. Wow!!! Today is an amazing day to be almost employed :) " 
+    mc "Yup.. This should be the place!!!!"
 
     scene bg intro 
     show mc (F2)
@@ -231,7 +232,7 @@ show mc
 
     "The second round begins!"
 
-    call battle(enemy, rebme_weak_spot_damage)
+    call battle(enemy, Anett_weak_spot_damage)
 
     $ result = _return
 
@@ -255,7 +256,7 @@ show mc
 
     "The third round begins!"
 
-    call battle(enemy, rebme_weak_spot_damage)
+    call battle(enemy, Meddal_weak_spot_damage)
 
     $ result = _return
 
@@ -265,7 +266,6 @@ show mc
 
     "lose"
 
-
     scene bg end 3 (lose third fight)
     jump start
 
@@ -273,8 +273,6 @@ show mc
     scene bg end 2 (lose second fight * reminder health is reflilled at the end of the rounds)
   jump start
    
-
-
 
     scene bg end 3 (loses finnal match)
     
@@ -317,11 +315,4 @@ label ending3:
     scene bg end 4
 
     c "PLACEHOLDER"
-
-    return
 return 
-
-
-
-
-
