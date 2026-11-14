@@ -1,4 +1,5 @@
-﻿# The script of the game goes in this file.
+﻿# for better location xalign 0-1.0, yalign 0-1.0
+
 
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
@@ -187,12 +188,13 @@ screen title_screen():
             action Return()
 
     scene bg outside 
-     show mc (F1)
+     show mc PLACEHOLDER at left 
     mc "Wow… wow.. Wow!!! Today is an amazing day to be almost employed :) " 
     mc "Yup.. This should be the place!!!!"
 
     scene bg intro 
-    show mc (F2)
+    show mc PLACEHOLDER at left 
+    show c PLACEHOLDER at right 
     c "you are up in x, good luck, you are going to need it" 
    
 
@@ -201,8 +203,8 @@ screen title_screen():
    
 
 scene bg fight 1
-  show mc 
-    show R 
+  show mc PLACEHOLDER at left 
+    show R PLACEHOLDER at right 
 
     $ enemy = create_rebme()
 
@@ -225,8 +227,8 @@ scene bg fight 1
 
     scene bg fight 2
 
-show mc 
-    show a 
+show mc PLACEHOLDER at left 
+    show a PLACEHOLDER at right 
 
     $ enemy = create_Anett()
 
@@ -249,8 +251,8 @@ show mc
 
     scene bg fight 3
     
-   show mc 
-    show m
+   show mc PLACEHOLDER at left
+    show m PLACEHOLDER at right 
 
     $ enemy = create_Meddal()
 
