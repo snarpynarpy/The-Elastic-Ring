@@ -3,17 +3,21 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
-define e = Character("Eileen")
 define mc = Character ("Main character")
 define c = Character ("Coach")
 define r = Chacter ("Rebme")
 define a = Charcter ("Anett")
 define m = Charcter ("Meddal")
+define cr = Charcter ("crowd")
+    # maybe delted later, useful if the crowd has audio
 
-# x= damage cuased when weak spot is missed ()
-# y= damage cuased when weak spot is hit (o1) 
-# z= damage cuased when weak spot is hit (o2) 
-# w= damage cuased when weak spot is hit (o3) 
+missed_weak_spot_damage = 10
+damage_cuased_when_weak_spot_is_hit_for_Rebme = 50
+damage_cuased_when_weak_spot_is_hit_for_Anett = 25
+damage_cuased_when_weak_spot_is_hit_for_Meddal = 10 
+    # 3 is proably too low
+    # look into how difficult t is to add in differ diffuclties
+        # 4 modes easy, med, hard, impossiable(cometing for a score+ leader board, just an idea)
 
     init python: 
     random 
@@ -60,7 +64,23 @@ damage = enemy deal_damage(player)
 player.take_damage(damage)
 renpy.notify(f"{enemy_name} attacks you for {damage} damage")
 
-    
+
+
+screen battel_status():
+    vbox: 
+        text "player health {player.health}"
+        text "enemy health {enemy.health}"
+            if not player.isalive
+                text "died"
+        elif if not enemy.isalive
+            text "win" 
+
+defult player = player("Main character", health= 100, attack=20)
+defult enemy = enemy("Rebme", health=100, attack=20)
+defult enemy = enemy("Anett", health=100, attack=20)
+defult enemy = enemy("Meddal", health=100, attack=20)
+    #will need to change as "enemy refers to 3 different "
+    # check to see if it works, possiabley chnage health
 
 
 # The game starts here.
