@@ -198,12 +198,12 @@ label start:
     mc "Yup.. This should be the place!!!!"
 
     scene bg intro
-    show c PLACEHOLDER at center
-    Show c at a new position with the move transition
-    show eileen happy at left
+    
+    show c at center
+    show c at left
     with move
-    "Eileen slides to the left."
-
+    
+    "c slides to the left."
     c "You are up in x, good luck, you are going to need it."
 
     scene bg walk through 1
