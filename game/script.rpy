@@ -18,6 +18,10 @@ default damage_cuased_when_weak_spot_is_hit_for_Anett = 25
 default damage_cuased_when_weak_spot_is_hit_for_Meddal = 10 
     # 3 is proably too low
 
+default player = None
+default enemy = None
+
+
 init python:
 
     import random
@@ -184,8 +188,6 @@ screen title_screen():
 
 label start:
 
-    default player = None
-    default enemy = None
     scene bg outside 
     show mc PLACEHOLDER at left 
    
@@ -197,7 +199,6 @@ label start:
     show c PLACEHOLDER at right 
     c "you are up in x, good luck, you are going to need it" 
    
-
     scene bg walk through 1
     # maybe delteted later 
    
@@ -210,7 +211,7 @@ label start:
 
     "The first round begins!"
 
-     call battle(enemy, damage_cuased_when_weak_spot_is_hit_for_Rebme)
+    call battle(enemy, damage_cuased_when_weak_spot_is_hit_for_Rebme)
 
     $ result = _return
 
@@ -243,7 +244,7 @@ label start:
 
     "lose"
 
-     scene bg walk through 3
+    scene bg walk through 3
     # maybe delteted later 
 
 
