@@ -11,7 +11,7 @@ define m = Character ("Meddal")
 define cr = Character ("crowd")
     # maybe delted later, useful if the crowd has audio
 
-missed_weak_spot_damage = 10
+default missed_weak_spot_damage = 10
 default damage_cuased_when_weak_spot_is_hit_for_Rebme = 50
 default damage_cuased_when_weak_spot_is_hit_for_Anett = 25
 default damage_cuased_when_weak_spot_is_hit_for_Meddal = 10 
@@ -81,13 +81,6 @@ init python:
             ["Left", "Right", "Up", "Down", "Space"]
         )
 
-default missed_weak_spot_damage = 10
-
-default rebme_weak_spot_damage = 50
-default anett_weak_spot_damage = 25
-default meddal_weak_spot_damage = 10
-
-
 default player = None
 default enemy = None
 
@@ -118,15 +111,15 @@ label battle(enemy, weak_spot_damage):
 
         "The enemy prepares to attack!"
 
-        # Randomly select the correct dodge direction
+       
         $ correct_direction = random.choice(enemy.directions)
 
-        # Let the player choose
+
         call screen dodge_screen(enemy.directions, enemy.hitboxes)
 
         $ dodge_choice = _return
 
-        # Check whether the player chose correctly
+       
 
         if dodge_choice == correct_direction:
 
@@ -144,7 +137,7 @@ label battle(enemy, weak_spot_damage):
 
             $ renpy.notify("You took [missed_weak_spot_damage] damage!")
 
-        # Check if enemy has been defeated
+
 
         if not enemy.is_alive():
 
@@ -152,7 +145,7 @@ label battle(enemy, weak_spot_damage):
 
             return "win"
 
-        # Check if player has been defeated
+        
 
         if not player.is_alive():
 
@@ -180,7 +173,6 @@ screen battle_status(player, enemy):
         text "[enemy.name]"
         text "Health: [enemy.health]"
 
-# The game starts here.
 
 label start:
 
