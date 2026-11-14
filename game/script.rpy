@@ -50,8 +50,11 @@ init python:
 
         return Player("Main character", 100, 20)
 
-    $ enemy = create_rebme()
+       def create_player():
+        return Player("Main character", 100, 20)
 
+
+    def create_rebme():
         return Fighter(
             "Rebme",
             100,
@@ -61,8 +64,7 @@ init python:
         )
 
 
-    $ enemy = create_Anett()
-
+    def create_anett():
         return Fighter(
             "Anett",
             100,
@@ -72,8 +74,7 @@ init python:
         )
 
 
-    $ enemy = create_Meddal()
-
+    def create_meddal():
         return Fighter(
             "Meddal",
             100,
@@ -81,9 +82,6 @@ init python:
             10,
             ["Left", "Right", "Up", "Down", "Space"]
         )
-
-default player = None
-default enemy = None
 
 
 screen dodge_screen(directions, hitboxes):
@@ -185,12 +183,16 @@ screen title_screen():
         text "THE ELASTIC RING"
 
         textbutton "Click to Start":
-            action start()
+            action Start()
 
 
 label start:
+
+    default player = None
+    default enemy = None
     scene bg outside 
-     show mc PLACEHOLDER at left 
+    show mc PLACEHOLDER at left 
+   
     mc "Wow… wow.. Wow!!! Today is an amazing day to be almost employed :) " 
     mc "Yup.. This should be the place!!!!"
 
@@ -204,7 +206,7 @@ label start:
     # maybe delteted later 
    
 
-scene bg fight 1
+    scene bg fight 1
     show mc PLACEHOLDER at left 
     show r PLACEHOLDER at right 
 
@@ -228,11 +230,10 @@ scene bg fight 1
     
 
     scene bg fight 2
-
     show mc PLACEHOLDER at left 
     show a PLACEHOLDER at right 
 
-    $ enemy = create_Anett()
+    $ enemy = create_anett()
 
     "The second round begins!"
 
@@ -252,15 +253,14 @@ scene bg fight 1
 
 
     scene bg fight 3
+    show mc PLACEHOLDER at left
+    show m PLACEHOLDER at right
 
-show mc PLACEHOLDER at left
-show m PLACEHOLDER at right
-
-    $ enemy = create_Meddal()
+    $ enemy = create_meddal()
 
     "The third round begins!"
 
-    ccall battle(enemy, damage_cuased_when_weak_spot_is_hit_for_Meddal)
+    call battle(enemy, damage_cuased_when_weak_spot_is_hit_for_Meddal)
 
     $ result = _return
 
