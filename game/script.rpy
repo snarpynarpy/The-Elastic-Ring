@@ -547,7 +547,7 @@ label start:
 
 
 
-   scene bg ring at bg_fit
+    scene bg ring at bg_fit
 
     show A as current_enemy at center, anett_size
 
