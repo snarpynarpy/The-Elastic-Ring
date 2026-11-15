@@ -1,3 +1,4 @@
+
 define mc = Character("Main character")
 define c = Character("Coach")
 define r = Character("Rebme")
@@ -11,17 +12,14 @@ image bg outside = "outside.png"
 image bg intro = "intro.png"
 image bg ring = "inside_the_ring.png"
 image bg black = "black_screen.png"
-image bg hand-map.png = "hand-map.png" 
-
+image bg hand_map = "hand-map.png"
 
 image mc = "mc.png"
 image C = "C.PNG"
 image R = "r1.png"
-image a_test = "a_stand.png"
+image a_test = "a_test.png"
 image m = "meddal_stand.png"
 
-# Defeated sprites
-# Make sure these files exist in your game/images folder.
 
 image R_defeated = "rebme_defeated.png"
 image a_defeated = "anett_defeated.png"
@@ -40,8 +38,8 @@ default enemy = None
 
 transform rebme_size:
     zoom 0.65
-transform bg_fit:
 
+transform bg_fit:
     xysize (config.screen_width, config.screen_height)
 
 transform anett_size:
@@ -74,13 +72,14 @@ init python:
 
     import random
 
-    # Register clock audio channel.
 
     renpy.music.register_channel(
         "clock",
         mixer="sfx",
         loop=True
     )
+
+
 
 
     class Fighter:
@@ -94,12 +93,14 @@ init python:
             self.directions = directions
 
         def is_alive(self):
+
             return self.health > 0
 
         def take_damage(self, damage):
 
             self.health -= damage
             self.health = max(self.health, 0)
+
 
     class Player(Fighter):
 
@@ -113,8 +114,6 @@ init python:
                 []
             )
 
-
-
     def create_player():
 
         return Player(
@@ -122,7 +121,6 @@ init python:
             100,
             20
         )
-
 
     def create_rebme():
 
@@ -134,7 +132,6 @@ init python:
             ["Left", "Right"]
         )
 
-
     def create_anett():
 
         return Fighter(
@@ -145,7 +142,6 @@ init python:
             ["Left", "Right", "Up", "Down"]
         )
 
-
     def create_meddal():
 
         return Fighter(
@@ -155,7 +151,6 @@ init python:
             10,
             ["Left", "Right", "Up", "Down", "Space"]
         )
-
 
     def opposite_direction(direction):
 
@@ -169,6 +164,18 @@ init python:
 
         return opposites.get(direction, direction)
 
+
+    def reset_game():
+
+        renpy.music.stop(channel="clock", fadeout=0.1)
+        renpy.music.stop(channel="music", fadeout=0.5)
+
+        renpy.hide_screen("countdown")
+        renpy.hide_screen("dodge_screen")
+        renpy.hide_screen("battle_status")
+        renpy.hide_screen("reset_button")
+
+        renpy.jump("start")
 
 
 label opening_music:
@@ -194,9 +201,6 @@ label battle_music:
 
     return
 
-
-screen countdown(number):
-
 screen countdown():
 
     modal True
@@ -204,7 +208,10 @@ screen countdown():
 
     default number = 3
 
+    on "show" action SetScreenVariable("number", 3)
+
     frame:
+
         xalign 0.5
         yalign 0.5
 
@@ -212,6 +219,7 @@ screen countdown():
         padding (60, 40)
 
         text "[number]":
+
             size 110
             color "#ffffff"
             xalign 0.5
@@ -221,8 +229,6 @@ screen countdown():
         SetScreenVariable("number", number - 1),
         Return()
     )
-
-
 
 
 screen dodge_screen(directions, hitboxes):
@@ -242,6 +248,7 @@ screen dodge_screen(directions, hitboxes):
             align (0.5, 0.5)
 
             text "DODGE!":
+
                 size 40
 
             text "Choose a direction!"
@@ -251,9 +258,8 @@ screen dodge_screen(directions, hitboxes):
             for direction in directions:
 
                 textbutton direction:
+
                     action Return(direction)
-
-
 
 screen battle_status(player, enemy):
 
@@ -271,13 +277,14 @@ screen battle_status(player, enemy):
             spacing 10
 
             text "PLAYER"
+
             text "Health: [player.health]/100"
 
             null height 20
 
             text "[enemy.name]"
-            text "Health: [enemy.health]/100"
 
+            text "Health: [enemy.health]/100"
 
 
 screen reset_button():
@@ -289,22 +296,15 @@ screen reset_button():
         xalign 0.98
         yalign 0.02
 
+        background "#000000aa"
+
+        padding (15, 10)
+
         textbutton "RESTART":
 
-               def reset_game():
+            text_size 20
 
-        renpy.music.stop(channel="clock", fadeout=0.1)
-
-        renpy.hide_screen("countdown")
-        renpy.hide_screen("dodge_screen")
-        renpy.hide_screen("battle_status")
-
-        renpy.hide_screen("reset_button")
-
-        renpy.jump("start")
-
-
-
+            action Function(reset_game)
 
 screen main_menu():
 
@@ -342,9 +342,10 @@ label battle(enemy, weak_spot_damage, enemy_image, defeated_image):
 
         "The enemy prepares to attack!"
 
-        # Choose the enemy's attack direction.
+        
 
         $ correct_direction = random.choice(enemy.directions)
+
 
         $ renpy.music.play(
             "clock_ticking.mp3",
@@ -358,11 +359,13 @@ label battle(enemy, weak_spot_damage, enemy_image, defeated_image):
             channel="clock"
         )
 
-call screen countdown()
-hide screen countdown
 
+    
 
-        # Stop clock after countdown.
+        call screen countdown
+
+        hide screen countdown
+
 
         $ renpy.music.stop(
             channel="clock",
@@ -370,11 +373,14 @@ hide screen countdown
         )
 
 
-       call screen dodge_screen(enemy.directions, enemy.hitboxes)
 
-    $ dodge_choice = _return
+        call screen dodge_screen(enemy.directions, enemy.hitboxes)
 
-        $ enemy_direction = opposite_direction(dodge_choice)
+        $ dodge_choice = _return
+
+
+        $ enemy_direction = correct_direction
+
 
         if enemy_direction == "Left":
 
@@ -395,6 +401,7 @@ hide screen countdown
         else:
 
             pause 0.3
+
 
         pause 0.3
 
@@ -426,7 +433,6 @@ hide screen countdown
 
         if not enemy.is_alive():
 
-
             if enemy.name == "Rebme":
 
                 show expression defeated_image as current_enemy at center, rebme_size
@@ -439,25 +445,22 @@ hide screen countdown
 
                 show expression defeated_image as current_enemy at center, meddal_size
 
+
             "Your opponent has been defeated!"
 
             hide screen battle_status
 
             return "win"
 
-
         if not player.is_alive():
 
-    $ renpy.music.stop(channel="clock", fadeout=0.2)
+            $ renpy.music.stop(channel="clock", fadeout=0.2)
 
-    hide screen countdown
-    hide screen dodge_screen
-    hide screen battle_status
+            hide screen countdown
+            hide screen dodge_screen
+            hide screen battle_status
 
-    return "lose"
-
-
-
+            return "lose"
 
 
     hide screen battle_status
@@ -479,29 +482,13 @@ label death_screen:
 
 label start:
 
-    # Reset player.
-
     $ player = create_player()
 
     show screen reset_button
-    zorder 100
 
-    frame:
-
-        xalign 0.98
-        yalign 0.02
-
-        background "#000000aa"
-
-        padding (15, 10)
-
-        textbutton "RESTART":
-
-            text_size 20
-
-            action Function(reset_game)
 
     call opening_music
+
 
     scene bg logo at bg_fit
 
@@ -512,7 +499,8 @@ label start:
     show mc at left, mc_size
 
     mc "Wow… wow.. Wow!!! Today is an amazing day to be almost employed :)"
-    scene bg hand-map.png at bg_fit
+
+    scene bg hand_map at bg_fit
 
     mc "Yup.. This should be the place!!!!"
 
@@ -527,6 +515,7 @@ label start:
     with move
 
     c "You are up in X, good luck, you are going to need it."
+
 
     scene bg ring
 
@@ -550,7 +539,6 @@ label start:
     if result == "lose":
 
         jump death_screen
-
 
     $ player.health = 100
 
@@ -599,7 +587,6 @@ label start:
         jump death_screen
 
     jump ending4
-
 
 label ending4:
 
