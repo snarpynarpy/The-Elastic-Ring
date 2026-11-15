@@ -11,7 +11,7 @@ define cr = Character ("crowd")
 
 image mc = "mc.png"
 image C = "C.PNG"
-image R = "R.png"
+image R = "r1.png"
 image a_test = "a_test.png"
 image m = "meddal_stand.png"
 image o = "outside.png"
