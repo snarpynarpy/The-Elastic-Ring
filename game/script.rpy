@@ -644,7 +644,7 @@ jump ending4
     $ renpy.music.stop(channel="clock", fadeout=0.3)
 
     scene bg ring at bg_fit
-    c “KID, YOU SURVIVED??!!! Welp, my loss on money, but you’ll be my new star fighter! Bring me even more cash!! Congratulations! You survived all three rounds!"
+    c “KID, YOU SURVIVED??!!! Welp, my loss on money, but youll be my new star fighter! Bring me even more cash!! Congratulations! You survived all three rounds!"
 
     "You have won the tournament!"
 
