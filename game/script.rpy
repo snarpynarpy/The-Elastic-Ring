@@ -8,6 +8,13 @@ define r = Character ("Rebme")
 define a = Character ("Anett")
 define m = Character ("Meddal")
 define cr = Character ("crowd")
+
+image mc = "mc.png"
+image C = "C.PNG"
+image R = "R.png"
+image a_test = "a_test.png"
+image M = "M.png"
+
     # maybe delted later, useful if the crowd has audio
 
 default missed_weak_spot_damage = 10
