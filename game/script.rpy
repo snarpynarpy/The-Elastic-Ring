@@ -491,9 +491,7 @@ label start:
 
     show screen reset_button
 
-
     call opening_music
-
 
     scene bg logo at bg_fit
 
@@ -509,7 +507,6 @@ label start:
 
     mc "Yup.. This should be the place!!!!"
 
-
     scene bg intro at bg_fit
 
     show co at center
@@ -519,10 +516,10 @@ label start:
     show C at left
     with move
 
-    c “Hey uhh.. You. The featherweight, right?"
-    mc “weird way to refer to me at an interview but yeah sure!!!”
-    c "It's about time you came. Everyone’s been waiting to see the new fighter, I have a lot of people betting on you. I can’t wait to rake in the cash when.. You win… Definitely win. Oh and I’m your coach. You’ll be lucky to even survive this place, featherweight. It's a fight to the death out here. Take this to fight, as a gift from me to you, ”
-    mc “To fight ^o^?? Wow what a fun interview ^_^”
+    c "Hey uhh.. You. The featherweight, right?"
+    mc "Weird way to refer to me at an interview but yeah sure!!!"
+    c "It's about time you came. Everyone's been waiting to see the new fighter, I have a lot of people betting on you. I can't wait to rake in the cash when.. You win… Definitely win. Oh and I'm your coach. You'll be lucky to even survive this place, featherweight. It's a fight to the death out here. Take this to fight, as a gift from me to you,"
+    mc "To fight ^o^?? Wow what a fun interview ^_^"
 
     scene bg ring at bg_fit
 
