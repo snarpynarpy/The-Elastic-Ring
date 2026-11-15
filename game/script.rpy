@@ -1,4 +1,3 @@
-
 define mc = Character("Main character")
 define c = Character("Coach")
 define r = Character("Rebme")
@@ -40,6 +39,9 @@ default enemy = None
 
 transform rebme_size:
     zoom 0.65
+transform bg_fit:
+
+    xysize (config.screen_width, config.screen_height)
 
 transform anett_size:
     zoom 0.65
@@ -194,21 +196,31 @@ label battle_music:
 
 screen countdown(number):
 
+screen countdown():
+
     modal True
+    zorder 80
+
+    default number = 3
 
     frame:
-
         xalign 0.5
         yalign 0.5
 
         background "#00000099"
-
         padding (60, 40)
 
         text "[number]":
-            size 100
+            size 110
             color "#ffffff"
             xalign 0.5
+
+    timer 1.0 repeat True action If(
+        number > 1,
+        SetScreenVariable("number", number - 1),
+        Return()
+    )
+
 
 
 
@@ -278,29 +290,46 @@ screen reset_button():
 
         textbutton "RESTART":
 
-            action [
-                Hide("reset_button"),
-                Jump("start")
-            ]
+               def reset_game():
+
+        renpy.music.stop(channel="clock", fadeout=0.1)
+
+        renpy.hide_screen("countdown")
+        renpy.hide_screen("dodge_screen")
+        renpy.hide_screen("battle_status")
+
+        renpy.hide_screen("reset_button")
+
+        renpy.jump("start")
 
 
 
-screen title_screen():
+
+screen main_menu():
 
     tag menu
 
-    add "bg logo"
+    add "bg logo" at bg_fit
 
     vbox:
 
         xalign 0.5
-        yalign 0.5
-        spacing 20
+        yalign 0.75
+
+        spacing 30
 
         text "THE ELASTIC RING":
-            size 50
 
-        textbutton "Click to Start":
+            size 60
+            color "#ffffff"
+            xalign 0.5
+
+        textbutton "START":
+
+            xalign 0.5
+
+            text_size 35
+
             action Start()
 
 
@@ -328,17 +357,9 @@ label battle(enemy, weak_spot_damage, enemy_image, defeated_image):
             channel="clock"
         )
 
-        $ countdown_number = 3
+ call screen countdown()
 
-        while countdown_number > 0:
-
-            show screen countdown(countdown_number)
-
-            $ renpy.pause(1.0, hard=True)
-
-            $ countdown_number -= 1
-
-        hide screen countdown
+hide screen countdown
 
 
         # Stop clock after countdown.
@@ -349,13 +370,9 @@ label battle(enemy, weak_spot_damage, enemy_image, defeated_image):
         )
 
 
-        call screen dodge_screen(
-            enemy.directions,
-            enemy.hitboxes
-        )
+       call screen dodge_screen(enemy.directions, enemy.hitboxes)
 
-        $ dodge_choice = _return
-
+    $ dodge_choice = _return
 
         $ enemy_direction = opposite_direction(dodge_choice)
 
@@ -409,7 +426,6 @@ label battle(enemy, weak_spot_damage, enemy_image, defeated_image):
 
         if not enemy.is_alive():
 
-            # Show defeated sprite.
 
             if enemy.name == "Rebme":
 
@@ -432,12 +448,16 @@ label battle(enemy, weak_spot_damage, enemy_image, defeated_image):
 
         if not player.is_alive():
 
-            $ renpy.music.stop(channel="clock", fadeout=0.2)
+    $ renpy.music.stop(channel="clock", fadeout=0.2)
 
-            hide screen countdown
-            hide screen battle_status
+    hide screen countdown
+    hide screen dodge_screen
+    hide screen battle_status
 
-            return "lose"
+    return "lose"
+
+
+
 
 
     hide screen battle_status
@@ -448,7 +468,7 @@ label death_screen:
 
     $ renpy.music.stop(channel="clock", fadeout=0.2)
 
-    scene bg black
+    scene bg black at bg_fit
 
     centered "YOU DIED"
 
@@ -464,15 +484,30 @@ label start:
     $ player = create_player()
 
     show screen reset_button
-    
+    zorder 100
+
+    frame:
+
+        xalign 0.98
+        yalign 0.02
+
+        background "#000000aa"
+
+        padding (15, 10)
+
+        textbutton "RESTART":
+
+            text_size 20
+
+            action Function(reset_game)
 
     call opening_music
 
-    scene bg logo
+    scene bg logo at bg_fit
 
     pause 2.0
 
-    scene bg outside
+    scene bg outside at bg_fit
 
     show mc at left, mc_size
 
@@ -481,7 +516,7 @@ label start:
     mc "Yup.. This should be the place!!!!"
 
 
-    scene bg intro
+    scene bg intro at bg_fit
 
     show C at center
 
@@ -561,8 +596,6 @@ label start:
     if result == "lose":
 
         jump death_screen
-
-
 
     jump ending4
 
