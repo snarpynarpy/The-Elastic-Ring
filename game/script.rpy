@@ -20,7 +20,8 @@ image R = "r1.png"
 image a_test = "a_test.png"
 image m = "meddal_stand.png"
 image A = "a_stand.png"
-
+image H = "hand_1.png"
+image c = "coach.PNG"
 
 image R_defeated = "rebme_defeated.png"
 image a_defeated = "anett_defeated.png"
@@ -508,7 +509,7 @@ label start:
 
     scene bg intro at bg_fit
 
-    show C at center
+    show c at center
 
     pause 0.5
 
