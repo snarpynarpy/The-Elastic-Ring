@@ -14,7 +14,7 @@ image C = "C.PNG"
 image R = "R.png"
 image a_test = "a_test.png"
 image M = "M.png"
-
+image m = "meddal_stand.png"
     # maybe delted later, useful if the crowd has audio
 
 default missed_weak_spot_damage = 10
@@ -228,6 +228,38 @@ label start:
     if result == "lose":
         jump ending1
 
+
+
+
+
+label ending1:
+
+    scene bg end 1
+    "You lost the first match."
+    jump start
+
+
+label ending2:
+
+    scene bg end 2
+    "You lost the second match."
+    jump start
+
+
+label ending3:
+
+    scene bg end 3
+    "You lost the final match."
+    jump start
+
+
+label ending4:
+
+    scene bg end 4
+    c "PLACEHOLDER"
+    return
+
+
     $ player.health = 100
 
     scene bg walk through 2
@@ -251,7 +283,7 @@ label start:
     scene bg walk through 3
 
     scene bg fight 3
-    show M at center
+    show m at center
 
     $ enemy = create_meddal()
 
