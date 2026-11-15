@@ -13,6 +13,9 @@ image bg intro = "intro.png"
 image bg ring = "inside_the _ring.png"
 image bg black = "black_screen.png"
 image bg hand_map = "hand-map.png"
+image bg end1 = "end1.png"
+image bg end2 = "end2.png"
+
 
 image mc = "mc.png"
 image C = "C.PNG"
@@ -611,5 +614,11 @@ label ending4:
     c "Congratulations! You survived all three rounds!"
 
     "You have won the tournament!"
+
+    scene end1
+    pause 2.0
+
+    scene end2
+    pause 2.0
 
     return
