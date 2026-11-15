@@ -17,7 +17,7 @@ image bg hand-map.png = "hand-map.png"
 image mc = "mc.png"
 image C = "C.PNG"
 image R = "r1.png"
-image a_test = "a_test.png"
+image a_test = "a_stand.png"
 image m = "meddal_stand.png"
 
 # Defeated sprites
