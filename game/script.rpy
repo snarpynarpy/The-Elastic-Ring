@@ -518,7 +518,7 @@ label start:
     c "You are up in X, good luck, you are going to need it."
 
 
-   scene bg ring at bg_fit at bg_fit
+    scene bg ring at bg_fit at bg_fit
 
     call battle_music
 
