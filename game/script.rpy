@@ -215,7 +215,7 @@ label start:
     scene bg walk through 1
 
     scene bg fight 1
-    show M at center
+    show m at center
 
     $ enemy = create_rebme()
 
