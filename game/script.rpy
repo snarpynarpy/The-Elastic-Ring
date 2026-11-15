@@ -358,8 +358,7 @@ label battle(enemy, weak_spot_damage, enemy_image, defeated_image):
             channel="clock"
         )
 
- call screen countdown()
-
+call screen countdown()
 hide screen countdown
 
 
