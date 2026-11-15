@@ -615,10 +615,10 @@ label ending4:
 
     "You have won the tournament!"
 
-    scene end1
+    scene bg end1 at bg_fit
     pause 2.0
 
-    scene end2
+    scene bg end2 at bg_fit
     pause 2.0
 
     return
