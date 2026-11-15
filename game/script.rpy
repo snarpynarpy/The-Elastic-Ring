@@ -13,9 +13,10 @@ image mc = "mc.png"
 image C = "C.PNG"
 image R = "R.png"
 image a_test = "a_test.png"
-image M = "M.png"
 image m = "meddal_stand.png"
-    # maybe delted later, useful if the crowd has audio
+image o = "outside.png"
+image i = "intro.png"
+image t = "inside_the_ring.png"
 
 default missed_weak_spot_damage = 10
 default damage_cuased_when_weak_spot_is_hit_for_Rebme = 50
@@ -215,7 +216,7 @@ label start:
     scene bg walk through 1
 
     scene bg fight 1
-    show m at center
+    show R at center
 
     $ enemy = create_rebme()
 
@@ -283,7 +284,7 @@ label ending4:
     scene bg walk through 3
 
     scene bg fight 3
-    show M at center
+    show m at center
 
     $ enemy = create_meddal()
 
