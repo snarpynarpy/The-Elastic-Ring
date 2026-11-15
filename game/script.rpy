@@ -610,7 +610,7 @@ label round_two:
     $ enemy = create_meddal()
 
 
-   $ enemy = create_meddal()
+    $ enemy = create_meddal()
 
 c "HOW ARE YOU STILL ALIVE?? Featherweight, you can't possibly survive the next one!?"
 
