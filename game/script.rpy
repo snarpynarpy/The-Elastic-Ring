@@ -547,20 +547,13 @@ label start:
 
 
 
+   label round_two:
     scene bg ring at bg_fit
-
     show A as current_enemy at center, anett_size
-
     $ enemy = create_anett()
-
     "The second round begins!"
-
-    call battle(
-        enemy,
-        damage_cuased_when_weak_spot_is_hit_for_Anett,
-        "a_test",
-        "a_defeated"
-    )
+    call battle(enemy, damage_cuased_when_weak_spot_is_hit_for_Anett, a_test, a_defeated)
+    
 
     $ result = _return
 
