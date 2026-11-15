@@ -10,7 +10,7 @@ define cr = Character("Crowd")
 image bg logo = "logo.png"
 image bg outside = "outside.png"
 image bg intro = "intro.png"
-image bg ring = "inside_the _ring.png"
+image bg ring = "inside_the_ring.png"
 image bg black = "black_screen.png"
 image bg hand_map = "hand-map.png"
 
@@ -518,7 +518,7 @@ label start:
     c "You are up in X, good luck, you are going to need it."
 
 
-    scene bg ring at bg_fit at bg_fit
+    scene bg ring at bg_fit
 
     call battle_music
 
@@ -547,21 +547,37 @@ label start:
 
 
 
-  label round_two:
+label round_two:
+    
+    # Restore player health.
+    $ player.health = 100
+
+
     scene bg ring at bg_fit
+
     show A as current_enemy at center, anett_size
+
     $ enemy = create_anett()
+
     "The second round begins!"
-    call battle(enemy, damage_cuased_when_weak_spot_is_hit_for_Anett, a_test, a_defeated)
+
+    call battle(
+        enemy,
+        damage_cuased_when_weak_spot_is_hit_for_Anett,
+        "A",
+        "a_defeated"
+    )
+
     $ result = _return
 
     if result == "lose":
 
         jump death_screen
 
+    # Restore player health.
     $ player.health = 100
 
-   scene bg ring at bg_fit
+    scene bg ring at bg_fit
 
     show m as current_enemy at center, meddal_size
 
@@ -584,11 +600,12 @@ label start:
 
     jump ending4
 
+
 label ending4:
 
     $ renpy.music.stop(channel="clock", fadeout=0.3)
 
-   scene bg ring at bg_fit
+    scene bg ring at bg_fit
 
     c "Congratulations! You survived all three rounds!"
 
