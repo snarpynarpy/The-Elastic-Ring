@@ -10,7 +10,7 @@ define cr = Character("Crowd")
 image bg logo = "logo.png"
 image bg outside = "outside.png"
 image bg intro = "intro.png"
-image bg ring = "inside_the_ring.png"
+image bg ring = "inside_the _ring.png"
 image bg black = "black_screen.png"
 image bg hand_map = "hand-map.png"
 
