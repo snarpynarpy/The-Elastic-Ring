@@ -632,11 +632,6 @@ label round_two:
     m: “Huh… I swear that kind of venom would knock out a person.. I've even tested it on myself!”
     m “that’s why my legs don't feel so well…” 
     
-
-    c “Wait…YOU DIDN’T FINISH THEM?”
-    
-    mc “what do you mean..?”
-    
     
     c ”Featherweight! If you don’t finish the job, they’ll bounce back!!”
     mc “Oh wow” 
@@ -670,6 +665,14 @@ label ending4:
     c "Congratulations! You survived all three rounds!"
 
     "You have won the tournament!"
+
+    c “Wait…YOU DIDN’T FINISH THEM?”
+    
+    mc “what do you mean..?”
+    r “YOU’RE DEAD FEATHER WEIGHT!”
+    a “YOU’RE DEAD FEATHER WEIGHT!”
+    m “YOU’RE DEAD FEATHER WEIGHT!”
+
 
     scene bg end1 at bg_fit
     pause 2.0
