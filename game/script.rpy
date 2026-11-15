@@ -498,7 +498,7 @@ label start:
 
     scene bg outside at bg_fit
 
-    show hand_1 at right, mc_size
+    show H at right, mc_size
 
     mc "Wow… wow.. Wow!!! Today is an amazing day to be almost employed :)"
 
