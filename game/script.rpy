@@ -1,6 +1,4 @@
-﻿# for better location xalign 0-1.0, yalign 0-1.0
-
-
+﻿
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
