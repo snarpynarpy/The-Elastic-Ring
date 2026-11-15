@@ -215,7 +215,7 @@ label start:
     scene bg walk through 1
 
     scene bg fight 1
-    show R at center
+    show M at center
 
     $ enemy = create_rebme()
 
@@ -283,7 +283,7 @@ label ending4:
     scene bg walk through 3
 
     scene bg fight 3
-    show m at center
+    show M at center
 
     $ enemy = create_meddal()
 
