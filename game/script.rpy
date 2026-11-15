@@ -11,6 +11,7 @@ image bg outside = "outside.png"
 image bg intro = "intro.png"
 image bg ring = "inside_the_ring.png"
 image bg black = "black_screen.png"
+image bg hand-map.png = "hand-map.png" 
 
 
 image mc = "mc.png"
@@ -512,6 +513,7 @@ label start:
     show mc at left, mc_size
 
     mc "Wow… wow.. Wow!!! Today is an amazing day to be almost employed :)"
+    scene bg hand-map.png at bg_fit
 
     mc "Yup.. This should be the place!!!!"
 
