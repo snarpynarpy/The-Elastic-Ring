@@ -629,7 +629,7 @@ label round_two:
     mc “Your snakes are so cool!!! What do you feed them?? :DDD”
     
     
-    m: “Huh… I swear that kind of venom would knock out a person.. I've even tested it on myself!”
+    m “Huh… I swear that kind of venom would knock out a person.. I've even tested it on myself!”
     m “that’s why my legs don't feel so well…” 
     
     
