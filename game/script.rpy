@@ -519,8 +519,14 @@ label start:
     show C at left
     with move
 
-    c "You are up in X, good luck, you are going to need it."
-
+    c "“Hey uhh.. You. The featherweight, right?"
+    mc “weird way to refer to me at an interview but yeah sure!!!”
+    c"It's about time you came. Everyone’s been waiting to see the new fighter, I have a lot of people betting on you.”
+    c"I can’t wait to rake in the cash when.. You win… Definitely win”
+    c"Oh and I’m your coach"
+    c“You’ll be lucky to even survive this place, featherweight. It's a fight to the death out here.”
+    c“Take this to fight, as a gift from me to you, ”
+    mc “To fight ^o^?? Wow what a fun interview ^_^”
 
     scene bg ring at bg_fit
 
@@ -529,6 +535,13 @@ label start:
     show R as current_enemy at center, rebme_size
 
     $ enemy = create_rebme()
+    c “How you fight is simple, featherweight.”
+    c “Just hit them with that ball (and get hit).”
+    c “Or dodge as well… but maybe don't do that. I've got some… plans for that.”
+ 
+    r “You really think you can defeat the great speed demon Rembe? Prepare for this attack!!”
+
+    mc “Oohh ok!!! (^v^)"
 
     "The first round begins!"
 
@@ -563,6 +576,26 @@ label round_two:
 
     $ enemy = create_anett()
 
+
+
+
+
+
+
+    c “You lived..?? I mean good job featherweight…i guess… but now you need to do the same here”
+    c “And remember! Throw the fight!”
+
+    mc “Throw… hmmmm… Of course I’ll throw the ball!!”
+
+    c “no I meant.. Nevermind.”
+
+    a “I’m Anett, the cutest magical girl in the world”
+    a "I’ll defeat you with my magical charm ray!”
+
+    mc “... THAT’S A GUN?!! ToT”
+
+    a “Prepare to dodge this! I can shoot in all directions”
+
     "The second round begins!"
 
     call battle(
@@ -587,6 +620,28 @@ label round_two:
 
     $ enemy = create_meddal()
 
+
+    c: “HOW ARE YOU STILL ALIVE??”
+    c“Featherweight you can't possibly survive the next one!??” 
+
+    m: “please don't hurt me…” 
+    
+    mc “Your snakes are so cool!!! What do you feed them?? :DDD”
+    
+    
+    m: “Huh… I swear that kind of venom would knock out a person.. I've even tested it on myself!”
+    m “that’s why my legs don't feel so well…” 
+    
+
+    c “Wait…YOU DIDN’T FINISH THEM?”
+    
+    mc “what do you mean..?”
+    
+    
+    c ”Featherweight! If you don’t finish the job, they’ll bounce back!!”
+    mc “Oh wow” 
+
+
     "The final round begins!"
 
     call battle(
@@ -610,7 +665,8 @@ label ending4:
     $ renpy.music.stop(channel="clock", fadeout=0.3)
 
     scene bg ring at bg_fit
-
+    c “KID, YOU SURVIVED??!!!”
+    c “Welp, my loss on money, but you’ll be my new star fighter! Bring me even more cash!!”
     c "Congratulations! You survived all three rounds!"
 
     "You have won the tournament!"
