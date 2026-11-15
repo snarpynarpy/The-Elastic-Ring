@@ -519,13 +519,9 @@ label start:
     show C at left
     with move
 
-    c "“Hey uhh.. You. The featherweight, right?"
+    c “Hey uhh.. You. The featherweight, right?"
     mc “weird way to refer to me at an interview but yeah sure!!!”
-    c"It's about time you came. Everyone’s been waiting to see the new fighter, I have a lot of people betting on you.”
-    c"I can’t wait to rake in the cash when.. You win… Definitely win”
-    c"Oh and I’m your coach"
-    c“You’ll be lucky to even survive this place, featherweight. It's a fight to the death out here.”
-    c“Take this to fight, as a gift from me to you, ”
+    c "It's about time you came. Everyone’s been waiting to see the new fighter, I have a lot of people betting on you. I can’t wait to rake in the cash when.. You win… Definitely win. Oh and I’m your coach. You’ll be lucky to even survive this place, featherweight. It's a fight to the death out here. Take this to fight, as a gift from me to you, ”
     mc “To fight ^o^?? Wow what a fun interview ^_^”
 
     scene bg ring at bg_fit
@@ -535,13 +531,11 @@ label start:
     show R as current_enemy at center, rebme_size
 
     $ enemy = create_rebme()
-    c “How you fight is simple, featherweight.”
-    c “Just hit them with that ball (and get hit).”
-    c “Or dodge as well… but maybe don't do that. I've got some… plans for that.”
+    c “How you fight is simple, featherweight. Just hit them with that ball (and get hit). Or dodge as well… but maybe don't do that. I've got some… plans for that.”
  
     r “You really think you can defeat the great speed demon Rembe? Prepare for this attack!!”
 
-    mc “Oohh ok!!! (^v^)"
+    mc "Oohh ok!!! (^v^)"
 
     "The first round begins!"
 
@@ -582,15 +576,13 @@ label round_two:
 
 
 
-    c “You lived..?? I mean good job featherweight…i guess… but now you need to do the same here”
-    c “And remember! Throw the fight!”
+    c “You lived..?? I mean good job featherweight…i guess… but now you need to do the same here. And remember! Throw the fight!”
 
     mc “Throw… hmmmm… Of course I’ll throw the ball!!”
 
     c “no I meant.. Nevermind.”
 
-    a “I’m Anett, the cutest magical girl in the world”
-    a "I’ll defeat you with my magical charm ray!”
+    a “I’m Anett, the cutest magical girl in the world. I’ll defeat you with my magical charm ray!”
 
     mc “... THAT’S A GUN?!! ToT”
 
@@ -621,47 +613,41 @@ label round_two:
     $ enemy = create_meddal()
 
 
-    c: “HOW ARE YOU STILL ALIVE??”
-    c“Featherweight you can't possibly survive the next one!??” 
+   $ enemy = create_meddal()
 
-    m: “please don't hurt me…” 
-    
-    mc “Your snakes are so cool!!! What do you feed them?? :DDD”
-    
-    
-    m “Huh… I swear that kind of venom would knock out a person.. I've even tested it on myself! That’s why my legs don't feel so well…”
-    
-    
-    c ”Featherweight! If you don’t finish the job, they’ll bounce back!!”
-    mc “Oh wow” 
+c "HOW ARE YOU STILL ALIVE?? Featherweight, you can't possibly survive the next one!?"
 
+m "Please don't hurt me..."
 
-    "The final round begins!"
+mc "Your snakes are so cool!!! What do you feed them?? :DDD"
 
-    call battle(
-        enemy,
-        damage_cuased_when_weak_spot_is_hit_for_Meddal,
-        "m",
-        "m_defeated"
-    )
+m "Huh... I swear that kind of venom would knock out a person... I've even tested it on myself! That's why my legs don't feel so well..."
 
-    $ result = _return
+c "Featherweight! If you don't finish the job, they'll bounce back!!"
 
-    if result == "lose":
+mc "Oh wow"
 
-        jump death_screen
+"The final round begins!"
 
-    jump ending4
+call battle(
+    enemy,
+    damage_cuased_when_weak_spot_is_hit_for_Meddal,
+    "m",
+    "m_defeated"
+)
 
+$ result = _return
 
-label ending4:
+if result == "lose":
+
+    jump death_screen
+
+jump ending4
 
     $ renpy.music.stop(channel="clock", fadeout=0.3)
 
     scene bg ring at bg_fit
-    c “KID, YOU SURVIVED??!!!”
-    c “Welp, my loss on money, but you’ll be my new star fighter! Bring me even more cash!!”
-    c "Congratulations! You survived all three rounds!"
+    c “KID, YOU SURVIVED??!!! Welp, my loss on money, but you’ll be my new star fighter! Bring me even more cash!! Congratulations! You survived all three rounds!"
 
     "You have won the tournament!"
 
